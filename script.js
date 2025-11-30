@@ -50,6 +50,7 @@ const scheduleData = {
             { time: "17:45-18:00", title: "Numerical simulation of ship motions in regular waves in damaged condition", id: "46" }
         ],
         "Maitree Auditorium": [
+            { time: "11:20-11:50", title: "INVITED TALK: Dr. Ritwik Ghoshal", type: "invited" },
             { time: "12:20-12:35", title: "Behaviour of a re-entrant auxetic core sandwich plate structure subject to an underwater explosion", id: "7" },
             { time: "12:35-12:50", title: "Parametric Investigation of Free Vibration Behavior in Functionally Graded Material Plates using HSDT", id: "8" },
             { time: "12:50-13:05", title: "Integrity Assessment and Life Extension of Ageing Offshore Structures", id: "17" },
@@ -85,8 +86,7 @@ const scheduleData = {
             { time: "17:00", title: "HIGH TEA", type: "break" }
         ],
         "Maitree Auditorium": [
-            { time: "10:15-10:45", title: "INVITED TALK: Dr Harekrushna Behera", type: "invited" },
-            { time: "11:15-11:30", title: "Turning Performance Analysis of Multi-AUV formations: Hydrodynamic Effect of Configuration on Maneuvering Charactertics", id: "51" },
+            { time: "11:15-11:30", title: "Numerical Investigation of Flow Over a Flat Plate with Surface Hump: Effects on Boundary Layer Behavior", id: "52" },
             { time: "11:30-11:45", title: "Numerical Investigation of Flow Over a Flat Plate with Surface Hump: Effects on Boundary Layer Behavior", id: "52" },
             { time: "11:45-12:00", title: "Design requirement of mooring line stiffness through direct time-domain numerical simulation", id: "60" },
             { time: "12:00-12:15", title: "Parametric Investigation of the Efeect of Hybrid Drag Reduction System on a medium froude number displacement vessel", id: "63" },
@@ -297,15 +297,13 @@ function showAuditoriumPrograms(auditoriumName) {
     auditoriumResult.style.display = 'block';
 }
 
-// ===== PARTICLE ANIMATION =====
-class ParticleSystem {
+// ===== OCEAN WAVE ANIMATION =====
+class OceanWaveSystem {
     constructor() {
         this.canvas = document.getElementById('particleCanvas');
         this.ctx = this.canvas.getContext('2d');
-        this.particles = [];
-        this.particleCount = 150;
-        this.connectionDistance = 150;
-        this.mouse = { x: null, y: null, radius: 150 };
+        this.waves = [];
+        this.time = 0;
 
         this.init();
         this.animate();
@@ -314,7 +312,7 @@ class ParticleSystem {
 
     init() {
         this.resizeCanvas();
-        this.createParticles();
+        this.createWaves();
     }
 
     resizeCanvas() {
@@ -322,78 +320,93 @@ class ParticleSystem {
         this.canvas.height = window.innerHeight;
     }
 
-    createParticles() {
-        this.particles = [];
-        for (let i = 0; i < this.particleCount; i++) {
-            this.particles.push({
-                x: Math.random() * this.canvas.width,
-                y: Math.random() * this.canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                size: Math.random() * 2 + 1
-            });
-        }
-    }
-
-    drawParticles() {
-        this.particles.forEach(particle => {
-            this.ctx.beginPath();
-            this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-            this.ctx.fillStyle = 'rgba(0, 240, 255, 0.6)';
-            this.ctx.fill();
-        });
-    }
-
-    updateParticles() {
-        this.particles.forEach(particle => {
-            particle.x += particle.vx;
-            particle.y += particle.vy;
-
-            // Bounce off edges
-            if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -1;
-            if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -1;
-
-            // Mouse interaction
-            if (this.mouse.x !== null && this.mouse.y !== null) {
-                const dx = this.mouse.x - particle.x;
-                const dy = this.mouse.y - particle.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < this.mouse.radius) {
-                    const force = (this.mouse.radius - distance) / this.mouse.radius;
-                    const angle = Math.atan2(dy, dx);
-                    particle.vx -= Math.cos(angle) * force * 0.2;
-                    particle.vy -= Math.sin(angle) * force * 0.2;
-                }
+    createWaves() {
+        // Create multiple wave layers for depth
+        this.waves = [
+            {
+                amplitude: 30,
+                frequency: 0.01,
+                speed: 0.02,
+                yOffset: this.canvas.height * 0.3,
+                color: 'rgba(0, 240, 255, 0.15)',
+                lineWidth: 2
+            },
+            {
+                amplitude: 40,
+                frequency: 0.008,
+                speed: 0.015,
+                yOffset: this.canvas.height * 0.4,
+                color: 'rgba(112, 0, 255, 0.12)',
+                lineWidth: 2
+            },
+            {
+                amplitude: 50,
+                frequency: 0.012,
+                speed: 0.025,
+                yOffset: this.canvas.height * 0.5,
+                color: 'rgba(0, 240, 255, 0.1)',
+                lineWidth: 2
+            },
+            {
+                amplitude: 35,
+                frequency: 0.015,
+                speed: 0.018,
+                yOffset: this.canvas.height * 0.6,
+                color: 'rgba(255, 0, 255, 0.08)',
+                lineWidth: 2
+            },
+            {
+                amplitude: 45,
+                frequency: 0.009,
+                speed: 0.022,
+                yOffset: this.canvas.height * 0.7,
+                color: 'rgba(0, 240, 255, 0.06)',
+                lineWidth: 2
             }
-
-            // Damping
-            particle.vx *= 0.99;
-            particle.vy *= 0.99;
-        });
+        ];
     }
 
-    drawConnections() {
-        for (let i = 0; i < this.particles.length; i++) {
-            for (let j = i + 1; j < this.particles.length; j++) {
-                const dx = this.particles[i].x - this.particles[j].x;
-                const dy = this.particles[i].y - this.particles[j].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
+    drawWave(wave, time) {
+        this.ctx.beginPath();
+        this.ctx.moveTo(0, wave.yOffset);
 
-                if (distance < this.connectionDistance) {
-                    const opacity = (1 - distance / this.connectionDistance) * 0.3;
-                    this.ctx.beginPath();
-                    this.ctx.strokeStyle = `rgba(0, 240, 255, ${opacity})`;
-                    this.ctx.lineWidth = 1;
-                    this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
-                    this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
-                    this.ctx.stroke();
-                }
-            }
+        // Draw sine wave
+        for (let x = 0; x <= this.canvas.width; x += 5) {
+            const y = wave.yOffset +
+                Math.sin(x * wave.frequency + time * wave.speed) * wave.amplitude +
+                Math.sin(x * wave.frequency * 0.5 + time * wave.speed * 1.5) * (wave.amplitude * 0.5);
+            this.ctx.lineTo(x, y);
         }
+
+        // Fill below the wave
+        this.ctx.lineTo(this.canvas.width, this.canvas.height);
+        this.ctx.lineTo(0, this.canvas.height);
+        this.ctx.closePath();
+
+        // Gradient fill
+        const gradient = this.ctx.createLinearGradient(0, wave.yOffset - wave.amplitude, 0, this.canvas.height);
+        gradient.addColorStop(0, wave.color);
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+        this.ctx.fillStyle = gradient;
+        this.ctx.fill();
+
+        // Draw wave line
+        this.ctx.beginPath();
+        this.ctx.moveTo(0, wave.yOffset);
+        for (let x = 0; x <= this.canvas.width; x += 5) {
+            const y = wave.yOffset +
+                Math.sin(x * wave.frequency + time * wave.speed) * wave.amplitude +
+                Math.sin(x * wave.frequency * 0.5 + time * wave.speed * 1.5) * (wave.amplitude * 0.5);
+            this.ctx.lineTo(x, y);
+        }
+        this.ctx.strokeStyle = wave.color.replace(/[\d.]+\)$/g, '0.3)');
+        this.ctx.lineWidth = wave.lineWidth;
+        this.ctx.stroke();
     }
 
     animate() {
+        // Clear canvas
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         // Draw gradient background
@@ -406,27 +419,39 @@ class ParticleSystem {
         this.ctx.fillStyle = gradient;
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.updateParticles();
-        this.drawConnections();
-        this.drawParticles();
+        // Draw all waves
+        this.waves.forEach(wave => {
+            this.drawWave(wave, this.time);
+        });
 
+        // Add some floating bubbles/particles for extra ocean effect
+        this.drawBubbles();
+
+        this.time += 1;
         requestAnimationFrame(() => this.animate());
+    }
+
+    drawBubbles() {
+        // Add subtle floating particles like underwater bubbles
+        const bubbleCount = 20;
+        for (let i = 0; i < bubbleCount; i++) {
+            const x = (this.time * 0.5 + i * 50) % (this.canvas.width + 100);
+            const baseY = this.canvas.height * 0.4 + (i * 30) % (this.canvas.height * 0.6);
+            const y = baseY - (this.time * 0.3) % (this.canvas.height * 0.8);
+            const size = 2 + Math.sin(this.time * 0.05 + i) * 1;
+            const opacity = 0.1 + Math.sin(this.time * 0.03 + i) * 0.05;
+
+            this.ctx.beginPath();
+            this.ctx.arc(x, y, size, 0, Math.PI * 2);
+            this.ctx.fillStyle = `rgba(0, 240, 255, ${opacity})`;
+            this.ctx.fill();
+        }
     }
 
     setupEventListeners() {
         window.addEventListener('resize', () => {
             this.resizeCanvas();
-            this.createParticles();
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            this.mouse.x = e.x;
-            this.mouse.y = e.y;
-        });
-
-        window.addEventListener('mouseleave', () => {
-            this.mouse.x = null;
-            this.mouse.y = null;
+            this.createWaves();
         });
     }
 }
@@ -530,7 +555,7 @@ window.onload = async function () {
         console.log('Schedule rendered');
 
         // Initialize visual effects
-        new ParticleSystem();
+        new OceanWaveSystem();
         new SmoothScroll();
         new NavigationScroll();
 
@@ -551,4 +576,3 @@ window.onload = async function () {
         console.error('ERROR in window.onload:', error);
     }
 };
-
