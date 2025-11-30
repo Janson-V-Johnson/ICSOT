@@ -148,19 +148,19 @@ function renderSchedule() {
     for (const [day, venues] of Object.entries(scheduleData)) {
         console.log(`Processing day: ${day}`);
         html += `<div class="day-schedule">
-            <div class="day-title">📆 ${day}th December, 2025</div>`;
+            <div class="day-title"> ${day}th December, 2025</div>`;
 
         for (const [venue, sessions] of Object.entries(venues)) {
             console.log(`  Processing venue: ${venue}, sessions count: ${sessions.length}`);
             html += `<div class="venue-group">
-                <div class="venue-title">📍 ${venue}</div>`;
+                <div class="venue-title"> ${venue}</div>`;
 
             sessions.forEach(session => {
                 const cardClass = session.type === 'keynote' ? 'session-card keynote' :
                     session.type === 'invited' ? 'session-card invited' :
                         session.type === 'break' ? 'session-card' : 'session-card';
                 html += `<div class="${cardClass}">
-                    <div class="session-time">⏰ ${session.time}</div>
+                    <div class="session-time"> ${session.time}</div>
                     <div class="session-title">${session.title}</div>
                     ${session.id ? `<div class="session-id">Abstract ID: ${session.id}</div>` : ''}
                 </div>`;
@@ -200,7 +200,7 @@ async function searchAbstract() {
 
     if (result) {
         resultCard.innerHTML = `
-            <h3>📋 Abstract Details</h3>
+            <h3> Abstract Details</h3>
             <div class="result-detail">
                 <div class="result-label">Abstract ID:</div>
                 <div class="result-value">${result.id}</div>
@@ -264,7 +264,7 @@ function showAuditoriumPrograms(auditoriumName) {
     }
 
     // Build the result HTML
-    let html = `<h3>🎭 Programs at ${auditoriumName}</h3>`;
+    let html = `<h3> Programs at ${auditoriumName}</h3>`;
 
     programs.forEach(program => {
         const dateText = program.day === "Dec 12" ? "December 12, 2025" : "December 13, 2025";
@@ -575,4 +575,5 @@ window.onload = async function () {
         console.error('ERROR in window.onload:', error);
     }
 };
+
 
