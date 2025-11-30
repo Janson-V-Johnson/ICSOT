@@ -42,6 +42,8 @@ body {
     color: var(--color-text);
     overflow-x: hidden;
     line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 /* ===== PARTICLE CANVAS ===== */
@@ -566,7 +568,6 @@ body {
     transform: translateY(0);
 }
 
-
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .nav-menu {
@@ -697,6 +698,8 @@ body {
     padding: 0.75rem 1rem;
     border-radius: 10px;
     color: var(--color-text);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 /* Auditorium Filter */
@@ -762,6 +765,8 @@ body {
     align-items: center;
     gap: var(--spacing-sm);
     box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .venue-group {
@@ -779,6 +784,8 @@ body {
     color: var(--color-text);
     margin-bottom: var(--spacing-md);
     border-radius: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .session-card {
@@ -808,13 +815,17 @@ body {
     color: var(--color-text);
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
-    line-height: 1.5;
+    line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .session-id {
     color: var(--color-text-secondary);
     font-size: 0.95rem;
     font-style: italic;
+    word-wrap: break-word;
 }
 
 /* Special Session Types */
@@ -863,10 +874,93 @@ body {
     }
 
     .day-title {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
+        padding: 1rem;
     }
 
     .venue-title {
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+    }
+
+    .session-card {
+        padding: 1rem;
+    }
+
+    .session-title {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .session-time {
+        font-size: 0.9rem;
+    }
+
+    .session-id {
+        font-size: 0.85rem;
+    }
+
+    .result-value {
+        font-size: 0.9rem;
+    }
+
+    .hero-title {
+        font-size: clamp(3rem, 15vw, 6rem);
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1rem, 4vw, 1.4rem);
+    }
+
+    .hero-description {
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+    }
+
+    .section-title {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+
+    .filter-title {
+        font-size: 1.3rem;
+    }
+
+    .result-card h3 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Additional mobile fixes for very small screens */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .hero {
+        padding: 4rem 1rem;
+    }
+
+    .search-card {
+        padding: 1.5rem;
+    }
+
+    .cta-button {
+        padding: 1rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .nav-logo {
         font-size: 1.2rem;
+    }
+
+    .session-title {
+        font-size: 0.9rem;
+    }
+
+    .day-title {
+        font-size: 1rem;
+    }
+
+    .venue-title {
+        font-size: 0.95rem;
     }
 }
