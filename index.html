@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ocean Engineering & Naval Architecture Conference Schedule Visualizer">
+    <title>Conference Schedule Visualizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Outfit:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Particle Background Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">🌊 CONFERENCE</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#search">Search</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="gradient-text">CONFERENCE</span>
+            </h1>
+            <p class="hero-subtitle">Ocean Engineering & Naval Architecture</p>
+            <p class="hero-description">
+                December 11-13, 2025 • Explore the complete conference schedule
+            </p>
+            <button class="cta-button" onclick="document.getElementById('search').scrollIntoView({behavior: 'smooth'})">
+                <span>EXPLORE SCHEDULE</span>
+                <div class="button-glow"></div>
+            </button>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section id="search" class="search-section">
+        <div class="container">
+            <h2 class="section-title fade-in">🔍 Search by Abstract ID</h2>
+
+            <div class="search-card fade-in">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Enter Abstract ID (e.g., 2, 12, 13)">
+                    <button class="search-button" onclick="searchAbstract()">Search</button>
+                </div>
+                <div id="errorMessage" class="error-message"></div>
+                <div id="resultCard" class="result-card"></div>
+            </div>
+
+            <div class="auditorium-filter fade-in">
+                <h3 class="filter-title">🎭 Filter by Auditorium</h3>
+                <div class="auditorium-buttons">
+                    <button class="auditorium-btn" onclick="showAuditoriumPrograms('Kalidas Auditorium')">
+                        Kalidas Auditorium
+                    </button>
+                    <button class="auditorium-btn" onclick="showAuditoriumPrograms('Gargi Auditorium')">
+                        Gargi Auditorium
+                    </button>
+                    <button class="auditorium-btn" onclick="showAuditoriumPrograms('Maitree Auditorium')">
+                        Maitree Auditorium
+                    </button>
+                </div>
+            </div>
+            <div id="auditoriumResult" class="result-card"></div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule-section">
+        <div class="container">
+            <h2 class="section-title fade-in">📅 Conference Schedule</h2>
+            <div id="scheduleContainer"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>🌊 CONFERENCE 2025</h3>
+                    <p>Ocean Engineering & Naval Architecture</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Event</h4>
+                        <a href="#schedule">Schedule</a>
+                        <a href="#search">Search</a>
+                        <a href="#">Venue</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Information</h4>
+                        <a href="#">About</a>
+                        <a href="#">Speakers</a>
+                        <a href="#">Registration</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <a href="#">Email</a>
+                        <a href="#">Location</a>
+                        <a href="#">Support</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ocean Engineering Conference. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
