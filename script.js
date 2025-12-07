@@ -47,7 +47,7 @@ const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1AIGQPyms-ZimnswyB4e_3
                     {time: "16:45-17:00", title: "TEA BREAK", type: "break"},
                     {time: "19:30", title: "GRAND DINNER", type: "keynote"}
                 ],
-                "Maitree Auditorium": [
+                "Maitrayee Auditorium": [
                     {time: "12:20-12:35", title: "Behaviour of a re-entrant auxetic core sandwich plate structure subject to an underwater explosion", id: "7"},
                     {time: "12:35-12:50", title: "Parametric Investigation of Free Vibration Behavior in Functionally Graded Material Plates using HSDT", id: "8"},
                     {time: "12:50-13:05", title: "Integrity Assessment and Life Extension of Ageing Offshore Structures", id: "17"},
@@ -60,8 +60,8 @@ const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1AIGQPyms-ZimnswyB4e_3
                     {time: "16:15-16:30", title: "Numerical Investigation of Bubble-Induced Thermal Destratification in Marine and Offshore Cryogenic Storage Tanks", id: "40"},
                     {time: "16:30-16:45", title: "VOF-Based Analysis of Bubble Formation and Free-Surface Deformation for Marine Aeration and Cryogenic Storage Systems", id: "43"},
                     {time: "16:45-17:00", title: "TEA BREAK", type: "break"},
-                    {time: "17:00-17:30", title: "DEPARTMENT PRESENTATION at MAITREE AUDITORIUM", type: "keynote"},
-                    {time: "17:30-18:00", title: "INDUSTRIAL PRESENTATION at MAITREE AUDITORIUM", type: "keynote"},
+                    {time: "17:00-17:30", title: "DEPARTMENT PRESENTATION at MAITRAYEE AUDITORIUM", type: "keynote"},
+                    {time: "17:30-18:00", title: "INDUSTRIAL PRESENTATION at MAITRAYEE AUDITORIUM", type: "keynote"},
                     {time: "19:30", title: "GRAND DINNER", type: "keynote"}
                 ]
             },
@@ -89,7 +89,7 @@ const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1AIGQPyms-ZimnswyB4e_3
                     {time: "16:00-16:15", title: "Control Strategy for Cranes and Sensitivity to Delay", id: "45"},
                     {time: "17:00", title: "TEA BREAK", type: "break"}
                 ],
-                "Maitree Auditorium": [
+                "Maitrayee Auditorium": [
                     {time: "10:15-10:45", title: "INVITED TALK: Dr Harekrushna Behera", type: "invited"},
                     {time: "10:45-11:15", title: "INVITED TALK: Dr Subhendu Maity", type: "invited"},
                     {time: "11:15-11:30", title: "Protection measures for the west coast of Tamilnadu", id: "81"},
@@ -132,7 +132,10 @@ const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1AIGQPyms-ZimnswyB4e_3
                     {time: "12:00-12:15", title: "Conceptual Development of Pin Piles for the Installation of Offshore Wind HVDC Substation Platform", id: "13"},
                     {time: "12:15-12:30", title: "Turning Performance Analysis of Multi-AUV formations: Hydrodynamic Effect of Configuration on Maneuvering Characteristics", id: "51"},
                     {time: "12:30-12:45", title: "On Leveraging AI for Term Structure Understanding in Maritime Asset-Backed Deal", id: "65"}
-                ]
+                ],
+                "14th December : Department Laboratory Visits ": [
+                   
+                ]    
 
             }
         };
@@ -600,6 +603,5 @@ window.onload = async function () {
         console.error('ERROR in window.onload:', error);
     }
 };
-
 
 
