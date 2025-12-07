@@ -80,7 +80,7 @@ const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1AIGQPyms-ZimnswyB4e_3
                     {time: "12:30-12:45", title: "Design Framework for River Cruise Vessel in India: A Study of Safety Features, Statutory Requirment and Global Best Practices", id: "70"},
                     {time: "12:45-13:00", title: "Effect of CFD-Based Roll Damping on Ship Motion Response", id: "75"},
                     {time: "13:00-14:00", title: "LUNCH BREAK", type: "break"},
-                    {time: "14:00-14:30", title: "KEYNOTE ADDRESS: Shri. Sumithran Sampath", type: "keynote"},
+                    {time: "14:00-14:30", title: "KEYNOTE ADDRESS: Dr Tanmay Sarkar at Kalidas Auditorium", type: "keynote"},
                     {time: "14:30-15:00", title: "KEYNOTE ADDRESS: Prof. Hrishikesh Venkataraman", type: "keynote"},
                     {time: "15:00-15:15", title: "Numerical Study of Contaminant Transportation by Advection and Diffusion", id: "80"},
                     {time: "15:15-15:30", title: "Impact of Wave Directionality and Inter-Device Spacing on the Performance of Wave Energy Converter Arrays", id: "48"},
@@ -603,5 +603,6 @@ window.onload = async function () {
         console.error('ERROR in window.onload:', error);
     }
 };
+
 
 
