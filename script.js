@@ -8,11 +8,11 @@ const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1AIGQPyms-ZimnswyB4e_3
                     {time: "09:00-09:05", title: "LIGHTING THE LAMP", type: "keynote"},
                     {time: "09:05-09:10", title: "WELCOME ADDRESS BY ORGANIZING SECRETARY", type: "keynote"},
                     {time: "09:10-09:20", title: "ADDRESS BY HEAD, OENA", type: "keynote"},
-                    {time: "09:20-09:25", title: "ADDRESS BY DEAN OF ADMIN", type: "keynote"},
-                    {time: "09:25-09:30", title: "ADDRESS BY DEAN CEP", type: "keynote"},
+                    {time: "09:20-09:25", title: "ADDRESS BY DEAN CEP", type: "keynote"},
+                    {time: "09:25-09:30", title: "ADDRESS BY DEAN OF ADMIN", type: "keynote"},
                     {time: "09:30-09:40", title: "ADDRESS BY DIRECTOR, IIT KHARAGPUR, PATRON OF THE CONFERENCE", type: "keynote"},
-                    {time: "09:40-09:50", title: "ADDRESS BY CHIEF GUEST", type: "keynote"},
-                    {time: "09:50-10:00", title: "ADDRESS BY GUEST OF HONOUR", type: "keynote"},
+                    {time: "09:40-09:50", title: "ADDRESS BY GUEST OF HONOUR", type: "keynote"},
+                    {time: "09:50-10:00", title: "ADDRESS BY CHIEF GUEST", type: "keynote"},
                     {time: "10:00-10:05", title: "VOTE OF THANKS ORGANIZING SECRETARY", type: "keynote"},
                     {time: "10:05-10:35", title: "KEYNOTE ADDRESS: Dr. Vijaya Ravichandran", type: "keynote"},
                     {time: "10:35-10:50", title: "PHOTO SESSION & TEA BREAK", type: "break"},
@@ -600,5 +600,6 @@ window.onload = async function () {
         console.error('ERROR in window.onload:', error);
     }
 };
+
 
 
