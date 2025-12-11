@@ -114,7 +114,7 @@ const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1AIGQPyms-ZimnswyB4e_3
                     {time: "12:00-12:15", title: "Parametric Investigation of the Efeect of Hybrid Drag Reduction System on a medium froude number displacement vessel", id: "63"},
                     {time: "12:15-12:30", title: "Numerical Investigation and Validation of Hydrodynamic Performance and Cavitation Characteristics of the E779A Propeller", id: "79"},
                     {time: "12:30-12:45", title: "Numerical simulation of ship motions in regular waves in damaged condition", id: "46"},
-                    {time: "12:45-13:00", title: "Impact of Water Scatter Diagram Choice on Second Generation Intact Stability Assessments", id: "76"},
+                    {time: "12:45-13:00", title: "Impact of Wave Scatter Diagram Choice on Second Generation Intact Stability Assessments", id: "76"},
                     {time: "13:00-14:00", title: "LUNCH BREAK", type: "break"},
                     {time: "15:00-15:15", title: "Comparative Analysis of Propulsion System Layouts of a Catamaran Inland Passenger Ferry", id: "83"},
                     {time: "15:15-15:30", title: "Numerical Validation of Hull Resistance considering Surface roughness Effects", id: "85"},
@@ -131,7 +131,7 @@ const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1AIGQPyms-ZimnswyB4e_3
                     {time: "11:45-12:00", title: "Ship Hull Health Monitoring Through Modal Analysis: A Simulation Study", id: "53"},
                     {time: "12:00-12:15", title: "Physics-Informed Neural Networks (PINNs) Based Structural Health Monitoring for Floating Naval Docks: Event-Driven Damage Management and Decision Support", id: "37"},
                     {time: "12:15-12:30", title: "Conceptual Development of Pin Piles for the Installation of Offshore Wind HVDC Substation Platform", id: "13"},
-                    {time: "12:30-12:45", title: "Turning Performance Analysis of Multi-AUV formations: Hydrodynamic Effect of Configuration on Maneuvering Characteristics", id: "51"},
+                    {time: "12:30-12:45", title: "Optimization of Inter-Float Distance for Enhanced Performance in Integrated Point Absorber Wave Energy Arrays", id: "87"},
                     {time: "12:45-13:00", title: "On Leveraging AI for Term Structure Understanding in Maritime Asset-Backed Deal", id: "65"}
                     
                 ],
@@ -605,6 +605,7 @@ window.onload = async function () {
         console.error('ERROR in window.onload:', error);
     }
 };
+
 
 
 
